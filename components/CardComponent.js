@@ -1,13 +1,15 @@
 import { StatusBar } from "expo-status-bar";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Stack, Button } from "@react-native-material/core";
 import image from "../images/started_hat.png";
 const CardComponent = ({ navigation, item }) => {
   const handlePress = () => {
-    navigation.navigate("Home");
+    navigation.navigate("Details", {
+      item,
+    });
   };
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={() => handlePress()}>
       <View style={styles.block}>
         <Image style={styles.tinyLogo} source={image} />
       </View>
@@ -15,7 +17,7 @@ const CardComponent = ({ navigation, item }) => {
         {item.name}
       </Text>
       <Text style={{ color: "#434242" }}>${item.price}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

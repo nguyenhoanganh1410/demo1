@@ -5,7 +5,7 @@ import { Stack, Button } from "@react-native-material/core";
 import image from "../images/started_hat.png";
 import CardComponent from "./CardComponent";
 import { useEffect, useState } from "react";
-export default function Home() {
+export default function Home({ navigation }) {
   const [list, setList] = useState([]);
 
   useEffect(() => {
@@ -14,7 +14,9 @@ export default function Home() {
       .then((json) => setList(json));
   }, []);
 
-  const renderItem = ({ item }) => <CardComponent item={item} />;
+  const renderItem = ({ item }) => (
+    <CardComponent item={item} navigation={navigation} />
+  );
 
   return (
     <View style={styles.container}>
