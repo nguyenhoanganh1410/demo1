@@ -27,6 +27,27 @@ export default function Details({ route, navigation }) {
   const { item } = route.params;
 
   // console.log(item.image);
+  const handleAddToCart = () => {
+    const dataObject = {
+      name: item.name,
+      image: item.image,
+      price: item.price,
+    };
+    fetch("https://63984711fe03352a94caecd0.mockapi.io/api/cart", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dataObject),
+    })
+      .then((response) => {
+        console.log("thanh cong");
+      })
+      .then((data) =>
+        // this is the data we get after putting our data,
+        console.log(data)
+      );
+  };
 
   return (
     <View style={styles.container}>
